@@ -1,78 +1,95 @@
-# Example app with styled-components
+> # REACT, STYLED COMPONENTS E NEXT.JS
+>
+> PARTICIPE E VÁ MAIS FUNDO
 
-This example features how you use a different styling solution than [styled-jsx](https://github.com/zeit/styled-jsx) that also supports universal styles. That means we can serve the required styles for the first render within the HTML and then load the rest in the client. In this case we are using [styled-components](https://github.com/styled-components/styled-components).
+Nessa primeira aula de React vamos criar uma página inicial para você montar seu quiz personalizado e também já vamos colocá-la no ar! O repositório para você acompanhar está aqui:
 
-For this purpose we are extending the `<Document />` and injecting the server side rendered styles into the `<head>`, and also adding the `babel-plugin-styled-components` (which is required for server side rendering). Additionally we set up a global [theme](https://www.styled-components.com/docs/advanced#theming) for styled-components using NextJS custom [`<App>`](https://nextjs.org/docs/advanced-features/custom-app) component.
+https://github.com/alura-challenges/aluraquiz-base/
 
-## Deploy your own
+Não se preocupe com o código que tem lá agora, você vai ver tudo durante a aula. Ele está no repositório para te auxiliar.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+Vamos usar `styled-components` para criar componentes com estilo (literalmente falando) e diversos recursos do `Next.js` para, entre outras ferramentas que vamos ver nas próximas aulas, dar o código inicial do projeto e gerar os arquivos de _build_. Enquanto isso, vamos descobrindo como o React funciona e quais suas partes principais.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-styled-components&project-name=with-styled-components&repository-name=with-styled-components)
+## Conteúdo detalhado dessa aula
 
-## How to use
+- Iniciar um projeto com o boilerplate do React com Next.js e styled-components;
+- Criar componentes React usando styled-components;
+- Implementar tema _(theme)_ para a interface;
+- Fornecer as informações de tema e dados do quiz através de uma base de dados "mockada";
+- Usaremos o Next.js para criar a tag html `<head>` e as meta-infos necessárias;
+- Faremos a publicação (deploy) na Vercel.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Lembre de postar o que você desenvolveu durante esta aula com a hashtag **#ImersaoReact** marcando a gente e a Alura! E vale marcar a Vercel também!
 
-```bash
-npx create-next-app --example with-styled-components with-styled-components-app
-# or
-yarn create next-app --example with-styled-components with-styled-components-app
+Além disso, não deixe de subir seu projeto no `GitHub` e publicá-lo na `Vercel` da forma que fizemos no vídeo.
+
+```
+Após publicar seu projeto na Vercel, adicione no About do GitHub o endereço com o seu nome de user, nos Topics marque imersao-react, alura e aluraquiz e dê uma star no repositório do projeto!
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Também entre no [nosso server](https://discord.com/invite/uSZGtDrBep?utm_source=AluraWebsite&utm_medium=imersaopage) no **Discord** para compartilhar seus resultados e tirar suas dúvidas com a comunidade e o time da Alura. Lembre-se que a melhor forma de aprender é ensinando, então não deixe de ajudar a comunidade respondendo as dúvidas e compartilhando seu conhecimento.
 
-### Try it on CodeSandbox
+## Desafios dessa aula!
 
-[Open this example on CodeSandbox](https://codesandbox.io/s/github/vercel/next.js/tree/canary/examples/with-styled-components)
+- Crie seu próprio tema festivo, por exemplo de Halloween;
+- Utilize o protótipo do Figma (link abaixo) e crie o CSS "do zero";
+- Desafio do Paulo: Implemente a meta tag og:image utilizando a mesma imagem do background;
+- Desafio da Ju: Pensar em como passar da página inicial para a página de quiz.
 
-### Notes
+## Links importantes para você acompanhar a aula
 
-When wrapping a [Link](https://nextjs.org/docs/api-reference/next/link) from `next/link` within a styled-component, the [as](https://styled-components.com/docs/api#as-polymorphic-prop) prop provided by `styled` will collide with the Link's `as` prop and cause styled-components to throw an `Invalid tag` error. To avoid this, you can either use the recommended [forwardedAs](https://styled-components.com/docs/api#forwardedas-prop) prop from styled-components or use a different named prop to pass to a `styled` Link.
+- [Protótipo da interface no Figma](https://www.figma.com/file/cg1MIzSRRss8ggpypQbmdD/AluraQuiz?node-id=0%3A1)
 
-<details>
-<summary>Click to expand workaround example</summary>
-<br />
+- [Arquivo 'db.js'](https://github.com/alura-challenges/aluraquiz-base/blob/v1/db.json)
 
-**components/StyledLink.js**
+- [Código da Aula](https://github.com/alura-challenges/aluraquiz-base/tree/v1)
 
-```javascript
-import Link from 'next/link'
-import styled from 'styled-components'
+- [Gist com o CSS dos componentes usados na aula](https://github.com/alura-challenges/aluraquiz-base/pull/1/files)
 
-const StyledLink = ({ as, children, className, href }) => (
-  <Link href={href} as={as} passHref>
-    <a className={className}>{children}</a>
-  </Link>
-)
+- [Instale o NodeJS](https://nodejs.org/pt-br/)
 
-export default styled(StyledLink)`
-  color: #0075e0;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
+- [Exemplo Next.js com styled-components](https://github.com/vercel/next.js/tree/canary/examples/with-styled-components)
 
-  &:hover {
-    color: #40a9ff;
-  }
+- [Next.js](https://nextjs.org/)
 
-  &:focus {
-    color: #40a9ff;
-    outline: none;
-    border: 0;
-  }
-`
-```
+- [styled-components](https://styled-components.com/)
 
-**pages/index.js**
+- [VSCode Styled Components - melhora a sintaxe do CSS no JS](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
 
-```javascript
-import StyledLink from '../components/StyledLink'
+- [Repositório do código final da aula 1](https://github.com/alura-challenges/aluraquiz-base/tree/v1)
 
-export default () => (
-  <StyledLink href="/post/[pid]" forwardedAs="/post/abc">
-    First post
-  </StyledLink>
-)
-```
+## Links citados nessa aula
 
-</details>
+- [Série Git e GitHub para sobrevivência](https://www.youtube.com/playlist?list=PLh2Y_pKOa4Uf-cUQOVNGlz_GVHx8QYoE6)
+
+- [DOM e o que estudar antes de aprender React](https://youtu.be/QzDjdlF1BQI)
+
+- [VisualStudio Code: instalação, teclas de atalho, plugins e integrações](https://www.alura.com.br/artigos/visualstudio-code-instalacao-teclas-de-atalho-plugins-e-integracoes)
+
+- [Exemplos de paleta de cores com MaterialUI](https://material-ui.com/customization/color/)
+
+- [Exemplos de paleta de cores com Adobe Color](https://color.adobe.com/trends)
+
+- [Joguinho para treinar posicionamento com CSS Flexbox](https://flexboxfroggy.com/#pt-br)
+
+- [O que são tagged functions](https://www.alura.com.br/artigos/tagged-template-literals)
+
+## Conteúdos extras:
+
+- [Features que fazem o Next.js valer a pena](https://www.youtube.com/watch?v=pb5yKjCW004)
+
+- [Como é a infra por trás do build de um projeto React?](https://www.youtube.com/watch?v=LMCtGvLJT6c)
+
+- [Como o React funciona? Implemente o seu](https://www.youtube.com/watch?v=5MzOCxSWrrc)
+
+- [Criando uma Pokedex com Next.js](https://www.youtube.com/watch?v=c8mVlakBESE)
+
+- [Styled Components, por onde começar? Os poderes do CSS in JS](https://www.youtube.com/watch?v=QdfjWRc4ySA)
+
+- [CSS Reset](https://necolas.github.io/normalize.css/)
+
+## Como compartilhar seu quiz:
+
+Você pode, depois do deploy, simplesmente marcar a gente e também usar as hashtags **#ImersaoReact** e **#alura**. Quer fazer melhor? Você pode usar [esse plugin do Chrome](https://chrome.google.com/webstore/detail/screencastify-screen-vide/mmeijimgabbpbgpdklnllpncmdofkcpn) para gravar o seu site em ação, scrollar e mostrar efeitos especiais e ainda passear pelo seu código se usar o OBS.
+
+Poste no seu `Instagram`, `Linkedin`, `Twitter` ou `Facebook` e marque **#ImersaoReact**, **@aluraonline** e nosso time para que a gente possa comentar. Quem sabe você aparece nos extras das aulas!
