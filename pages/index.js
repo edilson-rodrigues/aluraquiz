@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
+
+/* */
+
 import db from '../db.json';
 import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
@@ -19,6 +23,10 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState('Edilson');
+  const isEmptyName = name.length === 0;
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -29,14 +37,27 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+
+              router.push(`/quiz?name=${name}`);
+
+              // router manda para proxima pagina
+            }}
+            >
+              <input placeholder="Diz ai seu nome" onChange={(e) => setName(e.target.value)} />
+              <button type="submit" disabled={isEmptyName}>
+                Jogar
+                {' '}
+                {!isEmptyName ? name : ''}
+              </button>
+            </form>
           </Widget.Content>
         </Widget>
 
         <Widget>
           <Widget.Content>
             <h1>Quizes da Galera</h1>
-
-            <p>lorem ipsum dolor sit amet...</p>
           </Widget.Content>
         </Widget>
         <Footer />
