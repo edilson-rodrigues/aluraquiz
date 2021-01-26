@@ -45,12 +45,21 @@ export default function Home() {
               // router manda para proxima pagina
             }}
             >
-              <input placeholder="Diz ai seu nome" onChange={(e) => setName(e.target.value)} />
-              <button type="submit" disabled={isEmptyName}>
-                Jogar
-                {' '}
-                {!isEmptyName ? name : ''}
-              </button>
+              <div className="pt-6">
+                <input
+                  className="w-full border bg-indigo-200 py-2 px-3 focus:outline-none focus:ring-2 focus:ring-indigo-100  bg-indigo-500 focus:border-transparent rounded placeholder-white"
+                  placeholder="Diz ai seu nome para jogar :)"
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+
+              <div className="pt-6">
+                <button className="w-full transition duration-700 ease-in-out bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 hover:bg-pink-700 rounded justify-center p-2 transform hover:scale-105" type="submit" disabled={isEmptyName}>
+                  Jogar
+                  {' '}
+                  {!isEmptyName ? name : ''}
+                </button>
+              </div>
             </form>
           </Widget.Content>
         </Widget>
