@@ -1,5 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import db from '../db.json'
+import IndexPage from '../src/components/Head'
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -31,7 +32,7 @@ const theme = db.theme;
 export default function App({ Component, pageProps }) {
   return (
     <>
-
+      <IndexPage />
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Component {...pageProps} />
