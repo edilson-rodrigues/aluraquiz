@@ -11,6 +11,7 @@ import QuizBackground from '../src/components/QuizBackground';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Input from '../src/components/Input';
+import Button from '../src/components/Button';
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -25,7 +26,7 @@ export const QuizContainer = styled.div`
 
 export default function Home() {
   const router = useRouter();
-  const [name, setName] = useState('Edilson');
+  const [name, setName] = useState('');
   const isEmptyName = name.length === 0;
 
   return (
@@ -48,14 +49,16 @@ export default function Home() {
             }}
             >
               <Input
+                name="nomeDoUsuaio"
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Diz ai seu nome para jogar :)"
+                value={name}
               />
-              <button type="submit" disabled={isEmptyName}>
-                Jogar
+              <Button type="submit" disabled={isEmptyName}>
+                Vamos jogar
                 {' '}
                 {!isEmptyName ? name : ''}
-              </button>
+              </Button>
 
             </form>
           </Widget.Content>
