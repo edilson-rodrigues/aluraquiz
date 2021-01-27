@@ -4,25 +4,66 @@
     "description": "Teste os seus conhecimentos sobre o universo Marvel e divirta-se criando o seu AluraQuiz!",
     "questions": [
         {
-            "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-            "title": "Como fazer um seletor por id via CSS?",
-            "description": "Essa é pra aquecer",
-            "answer": 2,
+            "image": "https://media.giphy.com/media/4BWByhavc3Hr2/giphy.gif",
+            "title": "Qual é o nome verdadeiro do Gavião Arqueiro?",
+            "description": "Gavião Arqueiro alter-ego de *** , é um personagem de quadrinhos americanos da Marvel Comics.",
+            "answer": 3,
             "alternatives": [
-                ".elemento",
-                "*elemento",
-                "#elemento",
-                "%elemento"
+                "Clint Hunter",
+                "Flint Romanoff",
+                "Clint Barton",
+                "Nick Fury",
+                "Jake Barton"
             ]
         },
         {
-            "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-            "title": "Como fazer um background gradiente com css?",
-            "description": "Faz tempo em haha",
+            "image": "https://media.giphy.com/media/NtuL7EUjEjuoM/giphy.gif",
+            "title": "Logo no começo do filme, Viúva Negra convence um herói a se juntar aos Vingadores. Quem era este heroi?",
+            "description": "Quando ela tentou garantir a Banner que ele não seria aprisionado, Banner simulou um ataque de raiva para testar a reação dela.",
             "answer": 0,
             "alternatives": [
-                "background: linear-gradient(#e66465, #9198e5);",
-                "background: gradient(#e66465, #9198e5);"
+                "Hulk",
+                "Thor",
+                "Homem de Ferro",
+                "Gavião Arqueiro",
+                "Capitão America"
+            ]
+        },
+        {
+            "image": "https://media.giphy.com/media/PpeGK6edBWAxi/giphy.gif",
+            "title": "Qual cidade dos EUA é atacada por Loki?",
+            "description": "Torre dos Vingadores: Uma torre localizada no Centro de Manhattan.",
+            "answer": 0,
+            "alternatives": [
+                "Nova Jersey",
+                "Seatle",
+                "Nova Iorque",
+                "Los Angeles",
+                "Las Vegas"
+            ]
+        },
+        {
+            "image": "https://media.giphy.com/media/MXdog4B88trR5dcPxE/giphy.gif",
+            "title": "Qual o nome da agencia que é comandada pelo Nick Fury?",
+            "description": "Uma sigla - apenas as letras",
+            "answer": 0,
+            "alternatives": [
+                "S.H.I.E.L.D.",
+                "H.I.E.D",
+                "S.W.O.R.D",
+                "H.Y.D.R.A"
+            ]
+        },
+        {
+            "image": "https://media.giphy.com/media/4vu9bLrVAHjMc/giphy.gif",
+            "title": "Stan Lee(criador de personagens importantes da Marvel) aparece em todos os filmes da Marvel, quando ele apareceu nos Vingadores?",
+            "description": "O quadrinista foi criador ou co-criador de boa parte dos super-heróis que hoje compõem o Marvel Cinematic Universe (MCU) e as demais franquias da marca: Homem Aranha, Hulk, X-Men, Quarteto Fantástico e Pantera Negra, só para citar alguns.",
+            "answer": 1,
+            "alternatives": [
+                "Na guerra, ele é um dos civis em perigo.",
+                "No final, ele aparece em um telejornal",
+                "No quartel de Loki, ele é um de seus ajudantes.",
+                "Quando Loki ataca o museu, ele se levanta e diz que não irá obedecer a Loki."
             ]
         }
     ],
@@ -32,10 +73,8 @@
     "theme": {
         "colors": {
             "primary": "#3F51B5",
-            "secondary": {
-                "light": "#E91E6399",
-                "default": "#E91E63"
-            },
+            "secondary": "#E91E63",
+            "secondaryLight": "#E91E6399",
             "mainBg": "#171B35",
             "contrastText": "#FFFFFF",
             "wrong": "#FF5722",
