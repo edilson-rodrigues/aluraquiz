@@ -55,7 +55,7 @@ export default function Home() {
                 value={name}
               />
               <Button type="submit" disabled={isEmptyName}>
-                Vamos jogar
+                Jogar
                 {' '}
                 {!isEmptyName ? name : ''}
               </Button>
