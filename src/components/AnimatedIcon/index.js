@@ -1,49 +1,45 @@
 import React from 'react';
-import Lottie from 'react-lottie';
-
+import Lottie from 'lottie-react';
+import styled from 'styled-components';
 import animationError from '../../../lotties/error.json';
 import animationSuccess from '../../../lotties/correct.json';
+
+const CenterItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const style = {
+  height: 120,
+  width: 120,
+};
 
 const iconScreen = {
   CORRECT: 'CORRECT',
   ERROR: 'ERROR',
 };
 
-const AnimationIcon = ({ isCorrect }) => {
-  /* lottie icon */
-  const iconSize = 120;
-
-  function setIcon(animationData) {
-    const defaultOptions = {
-      loop: true,
-      autoplay: true,
-      animationData,
-      rendererSettings: {
-        preserveAspectRatio: 'xMidYMid slice',
-      },
-    };
-
-    return defaultOptions;
-  }
-
-  return (
-    <div>
-      { isCorrect === iconScreen.CORRECT && (
+const AnimationIcon = ({ isCorrect }) => (
+  <div>
+    { isCorrect === iconScreen.CORRECT && (
+      <CenterItem>
         <Lottie
-          options={setIcon(animationSuccess)}
-          height={iconSize}
-          width={iconSize}
+          style={style}
+          animationData={animationSuccess}
         />
-      )}
-      { isCorrect === iconScreen.ERROR && (
+      </CenterItem>
+    )}
+    { isCorrect === iconScreen.ERROR && (
+      <CenterItem>
         <Lottie
-          options={setIcon(animationError)}
-          height={iconSize}
-          width={iconSize}
+          style={style}
+          animationData={animationError}
         />
-      )}
-    </div>
-  );
-};
+      </CenterItem>
+
+    )}
+  </div>
+);
 
 export default AnimationIcon;
