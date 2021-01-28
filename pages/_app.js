@@ -33,6 +33,7 @@ const { theme } = db;
 export default function App({ Component, pageProps }) {
   return (
     <>
+
       {/* head init */}
       <IndexPage />
       {/* head end */}
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
         {/* eslint-disable react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </ThemeProvider>
+
     </>
   );
 }
