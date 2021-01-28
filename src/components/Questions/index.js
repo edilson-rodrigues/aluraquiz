@@ -78,7 +78,7 @@ const QuestionWidget = ({
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
-                  value
+                  checked={false}
                 />
                 {alternative}
               </Widget.Topic>
