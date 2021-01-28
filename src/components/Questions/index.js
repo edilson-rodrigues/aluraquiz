@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Widget from '../Widget';
 import Button from '../Button';
+import AlternativesForm from '../AlternativesForm';
+import AnimationIcon from '../AnimatedIcon';
+
+const iconScreen = {
+  CORRECT: 'CORRECT',
+  ERROR: 'ERROR',
+};
 
 const QuestionWidget = ({
   question,
   questionIndex,
   totalQuestions,
-  handleSubmit,
+  onSubmit,
+  addResult,
 }) => {
+  const [selectedAlternative, setSelectedAlternative] = useState(undefined);
+  const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
   const questionId = `question__${questionIndex}`;
+  const isCorrect = selectedAlternative === question.answer;
+  const hasAlternativeSelected = selectedAlternative !== undefined;
 
   return (
     <Widget>
       <Widget.Header>
+        {/* <BackLinkArrow href="/" /> */}
         <h3>
-          {` Pergunta ${questionIndex + 1} de ${totalQuestions}`}
+          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
       </Widget.Header>
 
@@ -27,40 +40,66 @@ const QuestionWidget = ({
         }}
         src={question.image}
       />
-
       <Widget.Content>
-        <h2>{question.title}</h2>
-        <p>{question.description}</p>
+        <h2>
+          {question.title}
+        </h2>
+        <p>
+          {question.description}
+        </p>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
+        <AlternativesForm
+          onSubmit={(infosDoEvento) => {
+            infosDoEvento.preventDefault();
+            setIsQuestionSubmited(true);
+            setTimeout(() => {
+              addResult(isCorrect);
+              onSubmit();
+              setIsQuestionSubmited(false);
+              setSelectedAlternative(undefined);
+            }, 2 * 1000);
           }}
         >
           {question.alternatives.map((alternative, alternativeIndex) => {
-            const alternativeId = `alternative_${alternativeIndex}`;
+            const alternativeId = `alternative__${alternativeIndex}`;
+            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const isSelected = selectedAlternative === alternativeIndex;
             return (
               <Widget.Topic
-                key={alternative}
                 as="label"
+                key={alternativeId}
                 htmlFor={alternativeId}
+                data-selected={isSelected}
+                data-status={isQuestionSubmited && alternativeStatus}
               >
                 <input
-                  // style={{ display: 'none' }}
+                  style={{ display: 'none' }}
                   id={alternativeId}
                   name={questionId}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
+                  value
                 />
                 {alternative}
               </Widget.Topic>
             );
           })}
 
-          {/* <pre>{JSON.stringify(question, null, 4)}</pre>
- */}
-          <Button type="submit">Confirmar</Button>
-        </form>
+          {/* <pre>
+            {JSON.stringify(question, null, 4)}
+          </pre> */}
+          <Button type="submit" disabled={!hasAlternativeSelected}>
+            Confirmar
+          </Button>
+
+          {isQuestionSubmited && isCorrect && (
+            <AnimationIcon isCorrect={iconScreen.CORRECT} />
+          )}
+
+          {isQuestionSubmited && !isCorrect && (
+            <AnimationIcon isCorrect={iconScreen.ERROR} />
+          )}
+        </AlternativesForm>
       </Widget.Content>
     </Widget>
   );
