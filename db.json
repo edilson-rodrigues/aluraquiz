@@ -7,7 +7,7 @@
             "image": "https://media.giphy.com/media/4BWByhavc3Hr2/giphy.gif",
             "title": "Qual é o nome verdadeiro do Gavião Arqueiro?",
             "description": "Gavião Arqueiro alter-ego de *** , é um personagem de quadrinhos americanos da Marvel Comics.",
-            "answer": 3,
+            "answer": 2,
             "alternatives": [
                 "Clint Hunter",
                 "Flint Romanoff",
@@ -33,7 +33,7 @@
             "image": "https://media.giphy.com/media/PpeGK6edBWAxi/giphy.gif",
             "title": "Qual cidade dos EUA é atacada por Loki?",
             "description": "Torre dos Vingadores: Uma torre localizada no Centro de Manhattan.",
-            "answer": 0,
+            "answer": 2,
             "alternatives": [
                 "Nova Jersey",
                 "Seatle",
@@ -76,9 +76,9 @@
             "secondary": "#E91E63",
             "secondaryLight": "#E91E6399",
             "mainBg": "#171B35",
-            "contrastText": "#FFFFFF",
-            "wrong": "#FF5722",
-            "success": "#4CAF50"
+            "contrastText": "#ede7f6",
+            "wrong": "#ef5350",
+            "success": "#26a69a"
         },
         "borderRadius": "4px"
     }
