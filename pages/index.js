@@ -54,8 +54,13 @@ export default function Home() {
         </Widget>
 
         <Widget>
-          <Widget.Content>
+          <Widget.Header>
             <h1>Quizes da Galera</h1>
+          </Widget.Header>
+          <Widget.Content>
+
+            {db.external.map((external) => (<Widget.Topic>{external}</Widget.Topic>))}
+
           </Widget.Content>
         </Widget>
         <Footer />
