@@ -9,8 +9,10 @@
     "lint": "eslint ./ --fix"
   },
   "dependencies": {
+    "framer-motion": "^3.2.2-rc.1",
     "lottie-react": "^2.1.0",
-    "next": "latest",
+    "next": "^10.0.6",
+    "next-link": "^2.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
