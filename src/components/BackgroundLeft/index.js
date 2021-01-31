@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 const BackgroundLeft = styled.div`
-  width: 50%;    
+  width: 500px;    
   height: 100vh;
   background: rgba( 23, 27, 53, 0.25 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
