@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import Widget from '../Widget';
 import Button from '../Button';
 import BackLinkArrow from '../BackLinkArrow';
 import AlternativesForm from '../AlternativesForm';
-import AnimationIcon from '../AnimatedIcon';
 
-const iconScreen = {
-  CORRECT: 'CORRECT',
-  ERROR: 'ERROR',
-};
+const CenterText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Potta One', cursive;
+`;
 
 const QuestionWidget = ({
   question,
@@ -66,6 +68,7 @@ const QuestionWidget = ({
             const alternativeId = `alternative__${alternativeIndex}`;
             const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
             const isSelected = selectedAlternative === alternativeIndex;
+
             return (
               <Widget.Topic
                 as="label"
@@ -82,7 +85,17 @@ const QuestionWidget = ({
                   type="radio"
                   checked={false}
                 />
-                {alternative}
+                {isQuestionSubmited
+                  && isCorrect
+                  && isSelected
+                  ? <CenterText>Você acertou</CenterText>
+                  : isCorrect && alternative}
+
+                {isQuestionSubmited
+                  && !isCorrect
+                  && isSelected
+                  ? <CenterText>Você errou!</CenterText>
+                  : !isCorrect && alternative}
               </Widget.Topic>
             );
           })}
@@ -93,14 +106,6 @@ const QuestionWidget = ({
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
-
-          {isQuestionSubmited && isCorrect && (
-            <AnimationIcon isCorrect={iconScreen.CORRECT} />
-          )}
-
-          {isQuestionSubmited && !isCorrect && (
-            <AnimationIcon isCorrect={iconScreen.ERROR} />
-          )}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
