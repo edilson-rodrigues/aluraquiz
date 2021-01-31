@@ -6,7 +6,7 @@
         {
             "image": "https://media.giphy.com/media/4BWByhavc3Hr2/giphy.gif",
             "title": "Qual é o nome verdadeiro do Gavião Arqueiro?",
-            "description": "Gavião Arqueiro alter-ego de *** , é um personagem de quadrinhos americanos da Marvel Comics.",
+            "description": "Quero ver você acertar essa",
             "answer": 2,
             "alternatives": [
                 "Clint Hunter",
@@ -18,8 +18,8 @@
         },
         {
             "image": "https://media.giphy.com/media/NtuL7EUjEjuoM/giphy.gif",
-            "title": "Logo no começo do filme, Viúva Negra convence um herói a se juntar aos Vingadores. Quem era este heroi?",
-            "description": "Quando ela tentou garantir a Banner que ele não seria aprisionado, Banner simulou um ataque de raiva para testar a reação dela.",
+            "title": "Logo no começo do filme, Viúva Negra convence um herói a se juntar aos Vingadores.",
+            "description": "Quem era este heroi?",
             "answer": 0,
             "alternatives": [
                 "Hulk",
@@ -56,8 +56,8 @@
         },
         {
             "image": "https://media.giphy.com/media/4vu9bLrVAHjMc/giphy.gif",
-            "title": "Stan Lee(criador de personagens importantes da Marvel) aparece em todos os filmes da Marvel, quando ele apareceu nos Vingadores?",
-            "description": "O quadrinista foi criador ou co-criador de boa parte dos super-heróis que hoje compõem o Marvel Cinematic Universe (MCU)",
+            "title": "Stan Lee aparece em todos os filmes da Marvel, quando ele apareceu nos Vingadores?",
+            "description": "Criador de personagens importantes da Marvel",
             "answer": 1,
             "alternatives": [
                 "Na guerra, ele é um dos civis em perigo.",
