@@ -93,17 +93,12 @@ const ResultWidget = ({ results }) => {
             {results}
           </Widget.Content>
         </Widget>
-        <Button type="submit">ADICIONAR AO MEU PROJETO</Button>
-        <Widget.Content>
-          <CenterItem>
-            <BackButton
-              type="button"
-              onClick={() => router.push('/')}
-            >
-              Voltar para home
-            </BackButton>
-          </CenterItem>
-        </Widget.Content>
+        <Button
+          type="button"
+          onClick={() => router.push('/')}
+        >
+          Voltar para home
+        </Button>
       </Widget.Content>
     </Widget>
   );
