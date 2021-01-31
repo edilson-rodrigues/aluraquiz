@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 // src/components/Footer/index.js
 const FooterWrapper = styled.footer`
-  background-color: ${({ theme }) => theme.colors.secondaryLight};
+  background: rgba( 63, 81, 181, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 ); 
   padding: 20px;
   display: flex;
   align-items: center;
@@ -23,6 +28,9 @@ const FooterWrapper = styled.footer`
     span {
       text-decoration: underline;
     }
+  }
+  @media screen and (max-width: 500px) {
+    width: 318px;
   }
 `;
 
