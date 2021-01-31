@@ -76,7 +76,7 @@ export default function Home() {
     <QuizBackground backgroundImage={db.bg}>
       <BackgroundLeft>
         <QuizContainer>
-          <QuizLogo />
+          <QuizLogo quizDaGalera={false} />
           <Widget
             as={motion.section}
             variants={widgetAnimate}
@@ -176,7 +176,7 @@ export default function Home() {
                   >
                     <Widget.Topic
                       as={Link}
-                      href={isEmptyName ? '/' : `/quiz/${gitHubUser}__${projectName}?name=${name}`}
+                      href={isEmptyName ? '/' : `/quiz/${gitHubUser}__${projectName}?name=${name}?quiz=${true}`}
                       onClick={() => {
                         if (notifications.length === 0 && notifications.length < 2 && isEmptyName) {
                           setNotifications(add(notifications));
