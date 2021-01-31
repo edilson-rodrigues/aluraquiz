@@ -32,6 +32,7 @@ export async function getServerSideProps(context) {
         throw new Error('Falha em pegar os dados');
       })
       .then((jsonResponse) => jsonResponse)
+      // eslint-disable-next-line no-unused-vars
       .catch((err) => {
         /* console.error('error', err); */
       });
