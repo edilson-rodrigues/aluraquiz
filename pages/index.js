@@ -176,7 +176,7 @@ export default function Home() {
                   >
                     <Widget.Topic
                       as={Link}
-                      href={isEmptyName ? '/' : `/quiz/${gitHubUser}__${projectName}?name=${name}?quiz=${true}`}
+                      href={isEmptyName ? '/' : `/quiz/${gitHubUser}__${projectName}?name=${name}`}
                       onClick={() => {
                         if (notifications.length === 0 && notifications.length < 2 && isEmptyName) {
                           setNotifications(add(notifications));
