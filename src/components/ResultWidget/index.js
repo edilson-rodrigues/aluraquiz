@@ -13,16 +13,18 @@ const CircleQuestion = styled.div`
   display: inline-block;
 `;
 
-const CenterItem = styled.div`
+const pointStyle = { textAlign: 'center', fontFamily: 'Potta One' };
+const fontResult = { fontFamily: 'Potta One' };
+
+const PointSpace = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
-const BackButton = styled.button`
-  background: none;
-  color: ${({ theme }) => theme.colors.contrastText};
-  border: none;
+const ItemColumn = styled.div`
+  display: flex;  
+  flex-direction: column;
 `;
 
 const ResultWidget = ({ results }) => {
@@ -32,7 +34,7 @@ const ResultWidget = ({ results }) => {
   return (
     <Widget>
       <Widget.Header>
-        Resultado
+        <div style={fontResult}>Resultado</div>
       </Widget.Header>
       <Widget.Content>
         <div>
@@ -40,7 +42,7 @@ const ResultWidget = ({ results }) => {
             Mandou bem,
             {' '}
             {/* Desafio da Ju: Pegue o query param name e exiba o nome da pessoa...  */}
-            {name}
+            <span style={fontResult}>{name}</span>
             .
             {' '}
             { }
@@ -48,22 +50,17 @@ const ResultWidget = ({ results }) => {
           <h2>
             Você fez
             {' '}
+            <span style={fontResult}>
+              {results.filter((x) => x).length}
+              00
 
-            {/* usando o reduce */}
-            {/* {results.reduce((somatoriaAtual, resultAtual) => {
-              const isCorrect = resultAtual === true;
-              if (isCorrect) {
-                return somatoriaAtual + 100;
-              }
-              return somatoriaAtual;
-            }, 0)} */}
-
-            {/* usando o filter */}
-            {results.filter((x) => x).length}
-            00
+            </span>
             {' '}
-            pontos, parabéns!
-
+            pontos,
+            <span style={fontResult}>
+              {' '}
+              Parabéns!
+            </span>
           </h2>
         </div>
         <Widget>
@@ -73,20 +70,27 @@ const ResultWidget = ({ results }) => {
               return (
                 <Widget.Topic key={index}>
                   {/* number questions */}
-                  <CircleQuestion>
-                    <CenterItem>
-                      {`${index.toString().length > 1
-                        ? index + 1
-                        : `0${index + 1}`} 
+
+                  <PointSpace>
+                    <CircleQuestion>
+                      <div style={pointStyle}>
+                        {`${index.toString().length > 1
+                          ? index + 1
+                          : `0${index + 1}`} 
                     `}
-                    </CenterItem>
-
-                  </CircleQuestion>
-
-                  {` Questão: ${result === true
-                    ? 'Acertou'
-                    : 'Errou'}`}
-
+                      </div>
+                    </CircleQuestion>
+                    <ItemColumn>
+                      <div style={pointStyle}>
+                        {`${result
+                          ? '100'
+                          : '0'}`}
+                      </div>
+                      <div>
+                        pontos
+                      </div>
+                    </ItemColumn>
+                  </PointSpace>
                 </Widget.Topic>
               );
             })}
