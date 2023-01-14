@@ -11,16 +11,16 @@
   "dependencies": {
     "framer-motion": "^3.2.2-rc.1",
     "lottie-react": "^2.1.0",
-    "next": "^10.0.6",
+    "next": "12",
     "next-link": "^2.0.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-is": "^16.8.0",
-    "styled-components": "^5.0.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0",
+    "babel-plugin-styled-components": "^2.0.7",
     "eslint": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
