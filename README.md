@@ -49,6 +49,32 @@ yarn test:e2e   # roda os testes end-to-end (Cucumber + ts-node)
 
 Se abrir problemas ao rodar os comandos, verifique as versões no `package.json` e se o Node.js está atualizado.
 
+## Requisito de Node
+
+ - Esta versão do `next@16` requer Node >= 20.9.0. Se você estiver em Node 18 (por exemplo `18.20.8`), verá um erro de engine ao instalar dependências.
+
+Atualizar Node no Windows (recomendado):
+
+1. Instale o nvm-windows: https://github.com/coreybutler/nvm-windows/releases
+2. Instale uma versão compatível e ative-a:
+
+```powershell
+nvm install 20.9.0
+nvm use 20.9.0
+node -v
+```
+
+Alternativas:
+
+- Use o instalador oficial do Node.js (https://nodejs.org) e escolha v20.x.
+- Use `volta` (https://volta.sh/) para gerenciar versões de Node globalmente.
+
+Adicionei um arquivo `.nvmrc` com a versão mínima recomendada para facilitar troca de versões.
+
+Nota sobre CI
+
+- O workflow de CI foi atualizado para usar Node `20.x` para compatibilidade com `next@16`. Veja [/.github/workflows/ci.yml](.github/workflows/ci.yml).
+
 ## Desafios dessa aula!
 
 - Crie seu próprio tema festivo, por exemplo de Halloween;

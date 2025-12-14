@@ -34,8 +34,7 @@ This repo is a small Next.js + React quiz app (styled-components). The goal of t
 - The API route (`/api/db`) is intentionally permissive about CORS — changes to headers will affect cross-origin fetches by `quiz/[id].tsx`.
 
 ## When you make edits — practical tips
-- If you change the theme colors, update `db.json.theme` and verify `Quiz` pages render correctly (colors are read from the theme in `pages/quiz/[id].js`).
- - If you change the theme colors, update `db.json.theme` and verify `Quiz` pages render correctly (colors are read from the theme in `pages/quiz/[id].tsx`).
+ - If you change the theme colors, update `db.json.theme` and verify `Quiz` pages render correctly (colors are read from the theme in [pages/quiz/[id].tsx](pages/quiz/[id].tsx)).
 - To add a new question, append an object to `db.json.questions` matching the existing shape. The UI expects `answer` to be an integer index into `alternatives`.
 - Avoid changing the top-level structure of `db.json` (other code assumes keys like `questions`, `bg`, `theme`).
 
