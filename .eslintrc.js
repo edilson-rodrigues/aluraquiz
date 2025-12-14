@@ -12,7 +12,6 @@ module.exports = {
     },
     ecmaVersion: 2021,
     sourceType: 'module',
-    project: './tsconfig.json',
   },
   settings: {
     react: {
@@ -45,32 +44,16 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
     'react/prop-types': 'off',
+    'linebreak-style': 0,
   },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: './tsconfig.json',
+      },
       rules: {},
     },
   ],
 };
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  extends: ['plugin:react/recommended', 'airbnb'],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 12,
-    sourceType: 'module',
-  },
-  plugins: ['react'],
-  rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'react/prop-types': 0,
-    'react/jsx-props-no-spreading': 0,
-    'linebreak-style': 0,
-  },
-};
+// TypeScript-aware ESLint configuration (single export)
