@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/router";
 
 /* */
 
-import QuizBackground from '../../components/QuizBackground';
-import QuizContainer from '../../components/QuizContainer';
-import QuizLogo from '../../components/QuizLogo';
-import QuestionWidget from '../../components/Questions';
-import LoadingWidget from '../../components/Spinner';
-import ResultWidget from '../../components/ResultWidget';
-import BackgroundLeft from '../../components/BackgroundLeft';
+import QuizBackground from "../../components/QuizBackground";
+import QuizContainer from "../../components/QuizContainer";
+import QuizLogo from "../../components/QuizLogo";
+import QuestionWidget from "../../components/Questions";
+import LoadingWidget from "../../components/Spinner";
+import ResultWidget from "../../components/ResultWidget";
+import BackgroundLeft from "../../components/BackgroundLeft";
 
 const screenStates = {
-  QUIZ: 'QUIZ',
-  LOADING: 'LOADING',
-  RESULT: 'RESULT',
+  QUIZ: "QUIZ",
+  LOADING: "LOADING",
+  RESULT: "RESULT",
 };
 
 const QuizPage = ({ externalQuestions, externalBg }) => {
@@ -29,13 +29,9 @@ const QuizPage = ({ externalQuestions, externalBg }) => {
   const router = useRouter();
   const logo = router.query?.id?.length > 0;
 
-  function addResult(result) {
-    // results.push(result);
-    setResults([
-      ...results,
-      result,
-    ]);
-  }
+  const addResult = useCallback((result) => {
+    setResults((prev) => [...prev, result]);
+  }, []);
 
   // [React chama de: Efeitos || Effects]
   // React.useEffect
@@ -49,14 +45,14 @@ const QuizPage = ({ externalQuestions, externalBg }) => {
     // nasce === didMount
   }, []);
 
-  function handleSubmitQuiz() {
+  const handleSubmitQuiz = useCallback(() => {
     const nextQuestion = questionIndex + 1;
     if (nextQuestion < totalQuestions) {
       setCurrentQuestion(nextQuestion);
     } else {
       setScreenState(screenStates.RESULT);
     }
-  }
+  }, [questionIndex, totalQuestions]);
 
   return (
     <QuizBackground backgroundImage={bg}>
@@ -75,7 +71,9 @@ const QuizPage = ({ externalQuestions, externalBg }) => {
 
           {screenState === screenStates.LOADING && <LoadingWidget />}
 
-          {screenState === screenStates.RESULT && <ResultWidget results={results} />}
+          {screenState === screenStates.RESULT && (
+            <ResultWidget results={results} />
+          )}
         </QuizContainer>
       </BackgroundLeft>
     </QuizBackground>

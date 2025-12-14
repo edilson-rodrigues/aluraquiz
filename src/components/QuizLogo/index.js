@@ -1,13 +1,21 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import QuizLogoAlura from './alura_quiz';
+import React from "react";
+import PropTypes from "prop-types";
+import QuizLogoAlura from "./alura_quiz";
 
 function Logo({ className, quizDaGalera }) {
   return (
     <div>
-      {!quizDaGalera && <img className={className} width="318.75" height="133.45" viewBox="0 0 318.75 133.45" fill="none" src="/avengers_end_game.png" alt="logo_avengers_end_game" />}
+      {!quizDaGalera && (
+        <img
+          className={className}
+          width="318.75"
+          height="133.45"
+          src="/avengers_end_game.png"
+          alt="logo_avengers_end_game"
+        />
+      )}
       {quizDaGalera && <QuizLogoAlura />}
     </div>
   );
@@ -15,6 +23,11 @@ function Logo({ className, quizDaGalera }) {
 
 Logo.propTypes = {
   className: PropTypes.string.isRequired,
+  quizDaGalera: PropTypes.bool,
+};
+
+Logo.defaultProps = {
+  quizDaGalera: false,
 };
 
 const QuizLogo = styled(Logo)`
