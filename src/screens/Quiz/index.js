@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/router";
+import React, { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/router';
 
 /* */
 
-import QuizBackground from "../../components/QuizBackground";
-import QuizContainer from "../../components/QuizContainer";
-import QuizLogo from "../../components/QuizLogo";
-import QuestionWidget from "../../components/Questions";
-import LoadingWidget from "../../components/Spinner";
-import ResultWidget from "../../components/ResultWidget";
-import BackgroundLeft from "../../components/BackgroundLeft";
+import QuizBackground from '../../components/QuizBackground';
+import QuizContainer from '../../components/QuizContainer';
+import QuizLogo from '../../components/QuizLogo';
+import QuestionWidget from '../../components/Questions';
+import LoadingWidget from '../../components/Spinner';
+import ResultWidget from '../../components/ResultWidget';
+import BackgroundLeft from '../../components/BackgroundLeft';
 
 const screenStates = {
-  QUIZ: "QUIZ",
-  LOADING: "LOADING",
-  RESULT: "RESULT",
+  QUIZ: 'QUIZ',
+  LOADING: 'LOADING',
+  RESULT: 'RESULT',
 };
 
 const QuizPage = ({ externalQuestions, externalBg }) => {
