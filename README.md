@@ -28,6 +28,62 @@ Após publicar seu projeto na Vercel, adicione no About do GitHub o endereço co
 ```
 
 Também entre no [nosso server](https://discord.com/invite/uSZGtDrBep?utm_source=AluraWebsite&utm_medium=imersaopage) no **Discord** para compartilhar seus resultados e tirar suas dúvidas com a comunidade e o time da Alura. Lembre-se que a melhor forma de aprender é ensinando, então não deixe de ajudar a comunidade respondendo as dúvidas e compartilhando seu conhecimento.
+ 
+## Atualizações do projeto (migrations)
+
+- O projeto foi migrado para TypeScript: arquivos de código agora usam `.ts` e `.tsx`.
+- Atualizado o Next.js para a versão `16.x` e React para `18.x` conforme `package.json`.
+- Adicionados scripts e ferramentas de desenvolvimento: `biome` (formatação/checagem), `lefthook` (ganchos), e suporte a testes com `jest` e testes end-to-end com `@cucumber/cucumber` (Cucumber) + `ts-node`.
+- Arquitetura atual: endpoints na pasta `pages/api` em TypeScript (por exemplo `pages/api/db.ts`), páginas em `pages/*.tsx`, e componentes em `src/components` usando `.tsx`.
+
+Com essas atualizações, para desenvolvimento local use:
+
+```bash
+yarn install
+yarn dev       # inicia o Next.js em modo de desenvolvimento
+yarn build      # build de produção
+yarn start      # inicia build em produção
+yarn test       # roda os testes unitários (jest)
+yarn test:e2e   # roda os testes end-to-end (Cucumber + ts-node)
+```
+
+Se abrir problemas ao rodar os comandos, verifique as versões no `package.json` e se o Node.js está atualizado.
+
+## Requisito de Node
+
+ - Esta versão do `next@16` requer Node >= 20.9.0. Se você estiver em Node 18 (por exemplo `18.20.8`), verá um erro de engine ao instalar dependências.
+
+Atualizar Node no Windows (recomendado):
+
+1. Instale o nvm-windows: https://github.com/coreybutler/nvm-windows/releases
+2. Instale uma versão compatível e ative-a:
+
+```powershell
+nvm install 20.9.0
+nvm use 20.9.0
+node -v
+```
+
+Alternativas:
+
+- Use o instalador oficial do Node.js (https://nodejs.org) e escolha v20.x.
+- Use `volta` (https://volta.sh/) para gerenciar versões de Node globalmente.
+
+Adicionei um arquivo `.nvmrc` com a versão mínima recomendada para facilitar troca de versões.
+
+Nota sobre CI
+
+- O workflow de CI foi atualizado para usar Node `20.x` para compatibilidade com `next@16`. Veja [/.github/workflows/ci.yml](.github/workflows/ci.yml).
+
+Resolvendo warnings de instalação
+
+- Se você ver o warning `has unmet peer dependency "@testing-library/dom@^10.0.0"` ao rodar `yarn install`, instale a dependência de desenvolvimento necessária:
+
+```bash
+yarn add -D @testing-library/dom@^10.0.0
+```
+
+- Se vir o aviso `Workspaces can only be enabled in private projects.`, confirmamos o projeto como privado em `package.json` (`"private": true`) para suprimir esse aviso. Isso é seguro para um repo de aplicativo (impede publicação acidental no npm).
 
 ## Desafios dessa aula!
 

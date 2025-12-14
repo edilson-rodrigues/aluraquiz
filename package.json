@@ -1,32 +1,61 @@
 {
   "name": "with-styled-components",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "eslint:init": "eslint --init",
-    "lint": "eslint ./ --fix"
+    "test": "jest --coverage --passWithNoTests",
+    "test:watch": "jest --watch",
+    "format": "biome format",
+    "biome:check": "biome check",
+    "biome:fix": "biome check --apply",
+    "postinstall": "lefthook install"
   },
   "dependencies": {
-    "framer-motion": "^3.2.2-rc.1",
-    "lottie-react": "^2.1.0",
+    "framer-motion": "^3.10.6",
+    "lottie-react": "^2.4.1",
     "next": "16.0.7",
     "next-link": "^2.0.0",
-    "prop-types": "^15.7.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
-    "styled-components": "^5.3.6"
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-is": "^18.3.1",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^2.0.7",
-    "eslint": "^7.18.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "@babel/core": "^7.24.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^25.0.2",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "babel-plugin-styled-components": "^2.1.4",
+    "biome": "latest",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
+    "lefthook": "^1.3.7",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3",
+    "playwright": "^1.36.0",
+    "@cucumber/cucumber": "^8.9.0",
+    "ts-node": "^10.9.1"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest --coverage --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:e2e": "cucumber-js --require-module ts-node/register --require \"e2e/**/*.ts\" \"e2e/features\"",
+    "format": "biome format",
+    "biome:check": "biome check",
+    "biome:fix": "biome check --apply",
+    "postinstall": "lefthook install"
   },
   "license": "MIT"
 }
