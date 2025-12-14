@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
-import Lottie from 'lottie-react';
+import dynamic from 'next/dynamic';
 
 /* */
 
@@ -19,6 +19,8 @@ import Button from '../src/components/Button';
 import QuizContainer from '../src/components/QuizContainer';
 import { add, remove } from '../src/array-utils';
 import alert from '../lotties/alert.json';
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 
 const style = {
   listStyle: 'none',
