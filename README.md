@@ -28,6 +28,26 @@ Após publicar seu projeto na Vercel, adicione no About do GitHub o endereço co
 ```
 
 Também entre no [nosso server](https://discord.com/invite/uSZGtDrBep?utm_source=AluraWebsite&utm_medium=imersaopage) no **Discord** para compartilhar seus resultados e tirar suas dúvidas com a comunidade e o time da Alura. Lembre-se que a melhor forma de aprender é ensinando, então não deixe de ajudar a comunidade respondendo as dúvidas e compartilhando seu conhecimento.
+ 
+## Atualizações do projeto (migrations)
+
+- O projeto foi migrado para TypeScript: arquivos de código agora usam `.ts` e `.tsx`.
+- Atualizado o Next.js para a versão `16.x` e React para `18.x` conforme `package.json`.
+- Adicionados scripts e ferramentas de desenvolvimento: `biome` (formatação/checagem), `lefthook` (ganchos), e suporte a testes com `jest` e testes end-to-end com `@cucumber/cucumber` (Cucumber) + `ts-node`.
+- Arquitetura atual: endpoints na pasta `pages/api` em TypeScript (por exemplo `pages/api/db.ts`), páginas em `pages/*.tsx`, e componentes em `src/components` usando `.tsx`.
+
+Com essas atualizações, para desenvolvimento local use:
+
+```bash
+yarn install
+yarn dev       # inicia o Next.js em modo de desenvolvimento
+yarn build      # build de produção
+yarn start      # inicia build em produção
+yarn test       # roda os testes unitários (jest)
+yarn test:e2e   # roda os testes end-to-end (Cucumber + ts-node)
+```
+
+Se abrir problemas ao rodar os comandos, verifique as versões no `package.json` e se o Node.js está atualizado.
 
 ## Desafios dessa aula!
 
