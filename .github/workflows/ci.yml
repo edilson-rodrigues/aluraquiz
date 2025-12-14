@@ -23,7 +23,24 @@ jobs:
           cache: 'yarn'
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
-      - name: Run tests with coverage
+      - name: Run unit tests (Jest)
         run: yarn test
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Build app
+        run: yarn build
+
+      - name: Start app (background) and wait
+        run: |
+          nohup yarn start &
+          echo "waiting for http://localhost:3000"
+          npx wait-on http://localhost:3000
+
+      - name: Run E2E (Cucumber + Playwright)
+        env:
+          CUCUMBER_PUBLISH_ENABLED: 'false'
+        run: yarn test:e2e
