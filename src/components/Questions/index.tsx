@@ -12,14 +12,30 @@ const CenterText = styled.div`
   font-family: 'Potta One', cursive;
 `;
 
-const QuestionWidget = ({
+export interface Question {
+  image: string;
+  title: string;
+  description: string;
+  alternatives: string[];
+  answer: number;
+}
+
+interface Props {
+  question: Question;
+  questionIndex: number;
+  totalQuestions: number;
+  onSubmit: () => void;
+  addResult: (isCorrect: boolean) => void;
+}
+
+const QuestionWidget: React.FC<Props> = ({
   question,
   questionIndex,
   totalQuestions,
   onSubmit,
   addResult,
 }) => {
-  const [selectedAlternative, setSelectedAlternative] = useState(undefined);
+  const [selectedAlternative, setSelectedAlternative] = useState<number | undefined>(undefined);
   const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
   const questionId = `question__${questionIndex}`;
   const isCorrect = selectedAlternative === question.answer;
@@ -53,7 +69,7 @@ const QuestionWidget = ({
         </p>
 
         <AlternativesForm
-          onSubmit={(infosDoEvento) => {
+          onSubmit={(infosDoEvento: React.FormEvent<HTMLFormElement>) => {
             infosDoEvento.preventDefault();
             setIsQuestionSubmited(true);
             setTimeout(() => {
@@ -83,7 +99,7 @@ const QuestionWidget = ({
                   name={questionId}
                   onChange={() => setSelectedAlternative(alternativeIndex)}
                   type="radio"
-                  checked={false}
+                  checked={isSelected}
                 />
                 {isQuestionSubmited
                   && isCorrect
@@ -100,9 +116,6 @@ const QuestionWidget = ({
             );
           })}
 
-          {/* <pre>
-            {JSON.stringify(question, null, 4)}
-          </pre> */}
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>

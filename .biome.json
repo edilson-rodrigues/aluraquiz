@@ -1,0 +1,21 @@
+{
+  "files": {
+    "include": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "pages/**/*.{js,jsx,ts,tsx}",
+      "next-env.d.ts",
+      "db.json"
+    ],
+    "exclude": ["node_modules", ".next"]
+  },
+  "format": {
+    "enabled": true
+  },
+  "lint": {
+    "enabled": true
+  },
+  "language": {
+    "jsx": "react-jsx",
+    "sourceType": "module"
+  }
+}

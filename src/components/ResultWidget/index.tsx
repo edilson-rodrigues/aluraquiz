@@ -1,5 +1,4 @@
 import React from 'react';
-/* Desafio da Ju: Pegue o query param name e exiba o nome da pessoa... */
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import Widget from '../Widget';
@@ -13,8 +12,8 @@ const CircleQuestion = styled.div`
   display: inline-block;
 `;
 
-const pointStyle = { textAlign: 'center', fontFamily: 'Potta One' };
-const fontResult = { fontFamily: 'Potta One' };
+const pointStyle = { textAlign: 'center', fontFamily: 'Potta One' } as const;
+const fontResult = { fontFamily: 'Potta One' } as const;
 
 const PointSpace = styled.div`
   display: flex;
@@ -23,13 +22,18 @@ const PointSpace = styled.div`
 `;
 
 const ItemColumn = styled.div`
-  display: flex;  
+  display: flex;
   flex-direction: column;
 `;
 
-const ResultWidget = ({ results }) => {
+interface Props {
+  results: boolean[];
+}
+
+const ResultWidget: React.FC<Props> = ({ results }) => {
   const router = useRouter();
   const { name } = router.query;
+  const nameStr = Array.isArray(name) ? name[0] : name;
 
   return (
     <Widget>
@@ -41,11 +45,8 @@ const ResultWidget = ({ results }) => {
           <p>
             Mandou bem,
             {' '}
-            {/* Desafio da Ju: Pegue o query param name e exiba o nome da pessoa...  */}
-            <span style={fontResult}>{name}</span>
+            <span style={fontResult}>{nameStr}</span>
             .
-            {' '}
-            { }
           </p>
           <h2>
             Você fez
@@ -69,8 +70,6 @@ const ResultWidget = ({ results }) => {
               const index = resultIndex;
               return (
                 <Widget.Topic key={index}>
-                  {/* number questions */}
-
                   <PointSpace>
                     <CircleQuestion>
                       <div style={pointStyle}>

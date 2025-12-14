@@ -21,24 +21,22 @@ const ContentSpinner = styled.div`
   justify-content: center;  
   `;
 
-const ProgressSpinner = () => (
+const ProgressSpinner: React.FC = () => (
   <ContentSpinner>
     <Spinner />
   </ContentSpinner>
 );
 
-function LoadingWidget() {
-  return (
-    <Widget>
-      <Widget.Header>
-        Carregando...
-      </Widget.Header>
+const LoadingWidget: React.FC = () => (
+  <Widget>
+    <Widget.Header>
+      Carregando...
+    </Widget.Header>
 
-      <Widget.Content>
-        <ProgressSpinner />
-      </Widget.Content>
-    </Widget>
-  );
-}
+    <Widget.Content>
+      <ProgressSpinner />
+    </Widget.Content>
+  </Widget>
+);
 
 export default LoadingWidget;

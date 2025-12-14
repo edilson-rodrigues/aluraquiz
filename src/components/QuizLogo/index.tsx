@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import QuizLogoAlura from './alura_quiz';
 
-function Logo({ className, quizDaGalera }) {
+interface Props {
+  className: string;
+  quizDaGalera?: boolean;
+}
+
+function Logo({ className, quizDaGalera = false }: Props) {
   return (
     <div>
       {!quizDaGalera && (
@@ -20,15 +23,6 @@ function Logo({ className, quizDaGalera }) {
     </div>
   );
 }
-
-Logo.propTypes = {
-  className: PropTypes.string.isRequired,
-  quizDaGalera: PropTypes.bool,
-};
-
-Logo.defaultProps = {
-  quizDaGalera: false,
-};
 
 const QuizLogo = styled(Logo)`
   margin: auto;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Widget = styled.div`
+const Widget: any = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
   background: rgba( 63, 81, 181, 0.25 );

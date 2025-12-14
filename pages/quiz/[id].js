@@ -24,7 +24,9 @@ export async function getServerSideProps(context) {
   const [gitHubUser, projectName] = context.query.id.split('__');
 
   try {
-    const dbExterno = await fetch(`https://${projectName}.${gitHubUser}.vercel.app/api/db`)
+    const dbExterno = await fetch(
+      `https://${projectName}.${gitHubUser}.vercel.app/api/db`,
+    )
       .then((serverResponse) => {
         if (serverResponse.ok) {
           return serverResponse.json();
@@ -32,9 +34,8 @@ export async function getServerSideProps(context) {
         throw new Error('Falha em pegar os dados');
       })
       .then((jsonResponse) => jsonResponse)
-      // eslint-disable-next-line no-unused-vars
-      .catch((err) => {
-        /* console.error('error', err); */
+      .catch(() => {
+        /* error fetching external db */
       });
 
     return {

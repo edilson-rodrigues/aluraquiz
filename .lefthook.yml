@@ -1,3 +1,14 @@
+pre-push:
+  parallel: false
+  commands:
+    biome_check_and_build:
+      run: yarn biome:check && yarn build
+
+push:
+  parallel: false
+  commands:
+    biome_check:
+      run: yarn biome:check
 pre-commit:
   parallel: true
   commands:

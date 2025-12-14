@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const InputBase = styled.input`
   width: 100%;
@@ -14,25 +13,24 @@ const InputBase = styled.input`
   margin-bottom: 25px;
 `;
 
-const Input = ({ onChange, placeholder, ...props }) => (
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder: string;
+  name: string;
+  value?: string;
+}
+
+const Input: React.FC<InputProps> = ({
+  onChange, placeholder, value = '', ...props
+}) => (
   <div>
     <InputBase
       placeholder={placeholder}
       onChange={onChange}
+      value={value}
       {...props}
     />
   </div>
 );
-
-Input.defaultProps = {
-  value: '',
-};
-
-Input.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string,
-};
 
 export default Input;
