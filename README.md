@@ -75,6 +75,16 @@ Nota sobre CI
 
 - O workflow de CI foi atualizado para usar Node `20.x` para compatibilidade com `next@16`. Veja [/.github/workflows/ci.yml](.github/workflows/ci.yml).
 
+Resolvendo warnings de instalação
+
+- Se você ver o warning `has unmet peer dependency "@testing-library/dom@^10.0.0"` ao rodar `yarn install`, instale a dependência de desenvolvimento necessária:
+
+```bash
+yarn add -D @testing-library/dom@^10.0.0
+```
+
+- Se vir o aviso `Workspaces can only be enabled in private projects.`, confirmamos o projeto como privado em `package.json` (`"private": true`) para suprimir esse aviso. Isso é seguro para um repo de aplicativo (impede publicação acidental no npm).
+
 ## Desafios dessa aula!
 
 - Crie seu próprio tema festivo, por exemplo de Halloween;

@@ -22,12 +22,9 @@ This repo is a small Next.js + React quiz app (styled-components). The goal of t
 - Each question object minimally contains: `image`, `title`, `description`, `answer` (index), `alternatives` (array of strings). Follow this exact shape when adding questions.
 
 ## Runtime / developer workflows
-- Local dev: `yarn dev` (runs `next`).
-- Build: `yarn build` → `next build`. If you encounter build errors, inspect logs and Next.js version in [package.json](package.json) (`next@16.0.7` in this repo).
-- Start production preview: `yarn start`.
-- Lint: `yarn lint` runs `eslint` with Airbnb config (auto-fix enabled in `lint` script).
  - Tests: unit tests with `jest` (`yarn test`) and end-to-end tests with Cucumber (`yarn test:e2e`).
  - Formatting/checks: `biome` is used for formatting/analysis and `lefthook` installs git hooks on `postinstall`.
+ - Nota sobre instalação: se você receber o warning `has unmet peer dependency "@testing-library/dom@^10.0.0"`, instale `@testing-library/dom` como devDependency. Também marcamos o projeto como `private: true` no `package.json` para evitar o aviso `Workspaces can only be enabled in private projects.`
 
 ## Integrations and external communication
 - Community quizzes: `pages/quiz/[id].tsx` expects `context.query.id` of the form `githubUser__projectName`. The page will attempt to fetch `https://{projectName}.{gitHubUser}.vercel.app/api/db`. Keep fetch logic intact when updating server-side fetching.
