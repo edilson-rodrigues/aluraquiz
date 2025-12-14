@@ -51,7 +51,7 @@
     "start": "next start",
     "test": "jest --coverage --passWithNoTests",
     "test:watch": "jest --watch",
-    "test:e2e": "cucumber-js --require-module ts-node/register --require e2e/**/*.ts e2e/features",
+    "test:e2e": "cucumber-js --require-module ts-node/register --require \"e2e/**/*.ts\" \"e2e/features\"",
     "format": "biome format",
     "biome:check": "biome check",
     "biome:fix": "biome check --apply",
