@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint-staged:
+      run: npx lint-staged
+      include: 
+        - "src/**/*"
+        - "pages/**/*"
+        - "**/*.js"
+        - "**/*.jsx"
+        - "**/*.ts"
+        - "**/*.tsx"
