@@ -12,9 +12,9 @@ push:
 pre-commit:
   parallel: true
   commands:
-    lint-staged:
-      run: npx lint-staged
-      include: 
+    biome_check:
+      run: yarn biome:check
+      include:
         - "src/**/*"
         - "pages/**/*"
         - "**/*.js"
