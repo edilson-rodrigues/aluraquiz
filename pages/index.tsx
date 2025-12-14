@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
-import { motion, AnimatePresence } from 'framer-motion';
-import styled from 'styled-components';
-import dynamic from 'next/dynamic';
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import { motion, AnimatePresence } from 'framer-motion'
+import styled from 'styled-components'
+import dynamic from 'next/dynamic'
 
-/* */
+import db from '../db.json'
+import Widget from '../src/components/Widget'
+import Link from '../src/components/Link'
+import QuizLogo from '../src/components/QuizLogo'
+import QuizBackground from '../src/components/QuizBackground'
+import BackgroundLeft from '../src/components/BackgroundLeft'
+import Footer from '../src/components/Footer'
+import GitHubCorner from '../src/components/GitHubCorner'
+import Input from '../src/components/Input'
+import Button from '../src/components/Button'
+import QuizContainer from '../src/components/QuizContainer'
+import { add, remove } from '../src/array-utils'
+import alert from '../lotties/alert.json'
 
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import Link from '../src/components/Link';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizBackground from '../src/components/QuizBackground';
-import BackgroundLeft from '../src/components/BackgroundLeft';
-import Footer from '../src/components/Footer';
-import GitHubCorner from '../src/components/GitHubCorner';
-import Input from '../src/components/Input';
-import Button from '../src/components/Button';
-import QuizContainer from '../src/components/QuizContainer';
-import { add, remove } from '../src/array-utils';
-import alert from '../lotties/alert.json';
-
-const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false }) as any
+const MotionButton = motion<any>(Button)
+const MotionLi = motion.li as any
+const MotionFooter = motion<any>(Footer)
+const MotionAnimatePresence = AnimatePresence as any
 
 const style = {
   listStyle: 'none',
-};
+}
 
 const widgetAnimate = {
   hidden: { opacity: 1, scale: 0 },
@@ -36,7 +38,7 @@ const widgetAnimate = {
       staggerChildren: 0.2,
     },
   },
-};
+}
 
 const widgetItem = {
   hidden: { y: 20, opacity: 0 },
@@ -44,7 +46,7 @@ const widgetItem = {
     y: 0,
     opacity: 1,
   },
-};
+}
 
 const Notifications = styled.ul`
   position: fixed;
@@ -56,7 +58,7 @@ const Notifications = styled.ul`
   list-style: none;
   justify-content: flex-end;
   z-index: 9999;
-`;
+`
 
 const NotificationsContent = styled.li`
   width: 300px;
@@ -65,14 +67,16 @@ const NotificationsContent = styled.li`
   flex: 0 0 100px;
   position: relative;
   border-radius: 10px;  
-`;
+`
 
-export default function Home() {
-  const router = useRouter();
-  const [name, setName] = useState('');
-  const isEmptyName = name.length === 0;
+const MotionNotificationsContent = motion<any>(NotificationsContent)
 
-  const [notifications, setNotifications] = useState([]);
+export default function Home(): React.ReactElement {
+  const router = useRouter()
+  const [name, setName] = useState<string>('')
+  const isEmptyName = name.length === 0
+
+  const [notifications, setNotifications] = useState<number[]>([])
 
   return (
     <QuizBackground backgroundImage={db.bg}>
@@ -105,30 +109,25 @@ export default function Home() {
               <p>{db.description}</p>
 
               <form onSubmit={(e) => {
-                e.preventDefault();
+                e.preventDefault()
 
-                router.push(`/quiz?name=${name}`);
-
-                // router manda para proxima pagina
+                router.push(`/quiz?name=${name}`)
               }}
               >
                 <Input
                   name="nomeDoUsuaio"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                   placeholder="Diz ai seu nome para jogar :)"
                   value={name}
                 />
-                <Button
-                  as={motion.button}
+                <MotionButton
                   type="submit"
                   disabled={isEmptyName}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
-                  Jogar
-                  {' '}
-                  {!isEmptyName ? name : ''}
-                </Button>
+                  Jogar{' '}{!isEmptyName ? name : ''}
+                </MotionButton>
 
               </form>
             </Widget.Content>
@@ -158,17 +157,17 @@ export default function Home() {
               initial="hidden"
               animate="visible"
             >
-              {db.external.map((url, index) => {
-                const indexLink = index;
+                {db.external.map((url, index) => {
+                const indexLink = index
 
                 const prepareUrl = url
                   .replace(/\//g, '')
                   .replace('https:', '')
-                  .replace('.vercel.app', '');
+                  .replace('.vercel.app', '')
 
-                const [projectName, gitHubUser] = prepareUrl.split('.');
+                const [projectName, gitHubUser] = prepareUrl.split('.')
                 return (
-                  <motion.li
+                  <MotionLi
                     key={projectName}
                     style={style}
                     variants={widgetItem}
@@ -181,20 +180,19 @@ export default function Home() {
                       href={isEmptyName ? '/' : `/quiz/${gitHubUser}__${projectName}?name=${name}`}
                       onClick={() => {
                         if (notifications.length === 0 && notifications.length < 2 && isEmptyName) {
-                          setNotifications(add(notifications));
+                          setNotifications(add(notifications))
                         }
                       }}
                     >
                       {`${gitHubUser} / ${projectName}`}
                     </Widget.Topic>
-                  </motion.li>
-                );
+                  </MotionLi>
+                )
               })}
             </Widget.Content>
 
           </Widget>
-          <Footer
-            as={motion.footer}
+          <MotionFooter
             variants={widgetAnimate}
             initial="hidden"
             animate="visible"
@@ -202,16 +200,15 @@ export default function Home() {
         </QuizContainer>
 
         <Notifications>
-          <AnimatePresence initial={false}>
+          <MotionAnimatePresence initial={false}>
             {notifications.map((id) => (
-              <NotificationsContent
-                as={motion.li}
+              <MotionNotificationsContent
                 key={id}
                 positionTransition
                 initial={{ opacity: 0, y: 50, scale: 0.3 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.5, transition: { duration: 0.2 } }}
-                onClick={() => { setNotifications(remove(notifications, id)); }}
+                onClick={() => { setNotifications(remove(notifications, id)) }}
               >
                 <div style={{
                   paddingLeft: 10, paddingTop: 5, display: 'flex', flexWrap: 'wrap',
@@ -235,17 +232,13 @@ export default function Home() {
                 >
                   Por favor insirá o seu nome
                 </p>
-              </NotificationsContent>
+              </MotionNotificationsContent>
             ))}
-          </AnimatePresence>
+          </MotionAnimatePresence>
         </Notifications>
       </BackgroundLeft>
       <GitHubCorner projectUrl="https://github.com/edilson-rodrigues/aluraquiz" />
     </QuizBackground>
 
-  );
+  )
 }
-
-/* display: flex;
-  align-items: center;
-  justify-content: center; */

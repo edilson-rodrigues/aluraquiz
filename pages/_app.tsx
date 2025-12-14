@@ -1,7 +1,8 @@
-import React from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import db from '../db.json';
-import IndexPage from '../src/components/Head';
+import React from 'react'
+import type { AppProps } from 'next/app'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import db from '../db.json'
+import IndexPage from '../src/components/Head'
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -15,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     font-family: 'Lato', sans-serif;
     //Deixa em branco no começo
-    color: ${({ theme }) => theme.colors.contrastText};
+    color: ${({ theme }: any) => theme.colors.contrastText};
   }
   html, body {
     min-height:100vh;
@@ -26,23 +27,19 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
   }
-`;
+`
 
-const { theme } = db;
+const { theme } = db
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-
-      {/* head init */}
       <IndexPage />
-      {/* head end */}
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {/* eslint-disable react/jsx-props-no-spreading */}
         <Component {...pageProps} />
       </ThemeProvider>
-
     </>
-  );
+  )
 }
